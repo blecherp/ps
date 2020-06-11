@@ -55,11 +55,12 @@
         // Decode json to array
         $array = json_decode($pythonOutput, true);
 
+        // Print for testing purposes only
+        // var_dump($array);
+
         // Check if array contains #remote_avatar Key
-        if($array['#remote_avatar']!= NULL)
+        if($array['#remote_avatar'] != NULL)
         {
-            // Print for testing purposes only
-            // var_dump($array['#remote_avatar'][0]);
 
 
             // Iterate over every element in #remote_avatar
@@ -99,6 +100,20 @@
 
             }       
             
+        }
+        
+        
+        if($array['additional_templates'] != NULL)
+        {
+            if($array['additional_templates']['#interactive_pen'] != NULL)
+            {
+                $interactive_pen = $array['additional_templates']['#interactive_pen'];
+
+                foreach ($interactive_pen as $interactive_penElement)
+                {
+                    $sessionId = $interactive_penElement['sessionId'];
+                }
+            }
         }
         
     }
